@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+
+<div class="col-lg-12 mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Exam Toppers</h4>
+           <a href="{% url 'con_party_creat' %}"> <button type="button" class="btn btn-square btn-outline-primary">Добавить</button></a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-responsive-md">
+                    <thead>
+                        <tr>
+                        
+                            <th><strong>#</strong></th>
+                            <th><strong>Full name</strong></th>
+                            <th><strong>Balance UZB</strong></th>
+                            <th><strong>Balance USD</strong></th>
+                            <th><strong>Status</strong></th>
+                            <th><strong>Organization</strong></th>
+                            <th><strong>Phone</strong></th>
+                          
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for conparty in  conpartylist %}
+                        <tr>
+                            <td><strong>{{ conparty.id }}</strong></td>
+                        
+                            <td>{{ conparty.full_name }}</td>
+                            <td>{{ conparty.balance_uzs }}	</td>
+                            <td>{{ conparty.balance_usd }}	</td>
+                            <!-- <td>{{ i.created|date:' H:i Y-m-d' }}	</td>    -->
+                            {% if conparty.status == 'active' %}
+                            <td><div class="d-flex align-items-center"><i class="fa fa-circle text-success mr-1"></i> Активен</div></td>
+                         
+                           {% else %}
+                           <td><div class="d-flex align-items-center"><i class="fa fa-circle text-danger mr-1"></i> Не активен</div></td>
+
+                           {% endif %}
+                           <td>{{ conparty.organization }}	</td>
+                           <td>{{ conparty.phone }}	</td>
+
+                        
+                            <td>
+                                <div class="d-flex">
+                                    <a href="{% url 'con_party_update' conparty.id %}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            {% endfor %}
+                        
+                           
+                        
+                            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
