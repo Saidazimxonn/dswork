@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'counter_party',
     'counter_party_character',
     'delivery',
-    'payment_log',
+    'payment',
     'frontend',
     'widget_tweaks',
-    
+    'filter',
+    'active_link',
+    'frontend.templatetags'
 ]
 
 MIDDLEWARE = [

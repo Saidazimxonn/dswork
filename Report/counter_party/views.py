@@ -1,20 +1,34 @@
+from django.core import paginator
 from django.db import models
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView
 from .models import CounterParty
+from django.core.paginator import Paginator
+from django.core.paginator import EmptyPage
+from django.core.paginator import PageNotAnInteger
 
-class CounterPartyView(TemplateView):
-    template_name = 'con_party_list.html'
-    def get_context_data(self, **kwargs):
-        context = super(CounterPartyView, self).get_context_data(**kwargs)
-        return context
+
     
 class CounterPartyListView(ListView):
     template_name = 'con_party_list.html'
     model = CounterParty
+    paginate_by = 10
     
     def get_context_data(self, **kwargs):
         context = super(CounterPartyListView, self).get_context_data(**kwargs)
-        context['conpartylist'] = CounterParty.objects.all().order_by('-id')
+        conpartylist = CounterParty.objects.all().order_by('-id')
+        paginator = Paginator(conpartylist, self.paginate_by)
+      
+        page = self.request.GET.get('page')
+       
+        try:
+            file_exams = paginator.page(page)
+        except PageNotAnInteger:
+            file_exams = paginator.page(1)
+        except EmptyPage:
+            file_exams = paginator.page(paginator.num_pages)
+       
+        context['conpartylist'] = file_exams
+        
         return context
 
 class CounterPartyCreateView(CreateView):

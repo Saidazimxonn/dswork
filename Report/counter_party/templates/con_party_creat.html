@@ -4,7 +4,7 @@
 {% load widget_tweaks %}
     <div class="card m-3">
         <div class="card-header">
-            <h4 class="card-title">Horizontal Form</h4>
+            <h4 class="card-title">Новый контрагент</h4>
         </div>
         <div class="card-body">
             <div class="basic-form">
@@ -13,49 +13,49 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>Full name</label>
-                            {{ form.full_name|attr:"type:text"|attr:"placeholder:Full name"|add_class:"form-control"}}
+                            <label>Ф.И.О</label>
+                            {{ form.full_name|attr:"type:text"|attr:"placeholder:Ф.И.О"|add_class:"form-control"}}
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Organization</label>
-                            {{ form.organization|attr:"type:text"|attr:"placeholder:Organization"|add_class:"form-control"}}
+                            <label>Организация</label>
+                            {{ form.organization|attr:"type:text"|attr:"placeholder:Организация"|add_class:"form-control"}}
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Balance UZS</label>
-                            {{ form.balance_uzs|attr:"type:text"|attr:"placeholder:Balance UZS"|add_class:"form-control"}}
+                            <label>Баланс UZS</label>
+                            {{ form.balance_uzs|attr:"type:text"|attr:"placeholder:Баланс UZS"|add_class:"form-control"}}
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Balance USD</label>
-                            {{ form.balance_usd|attr:"type:text"|attr:"placeholder:Balance USD"|add_class:"form-control"}}
+                            <label>Баланс USD</label>
+                            {{ form.balance_usd|attr:"type:text"|attr:"placeholder:Баланс USD"|add_class:"form-control"}}
 
                           
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Phone</label>
-                            {{ form.phone|attr:"type:text"|attr:"placeholder:Phone"|add_class:"form-control"}}
+                            <label>Телефон</label>
+                            {{ form.phone|attr:"type:text"|attr:"placeholder:Телефон"|add_class:"form-control"}}
 
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Phone 2</label>
-                            {{ form.phone_2|attr:"type:text"|attr:"placeholder:Phone 2"|add_class:"form-control"}}
+                            <label>Телефон 2</label>
+                            {{ form.phone_2|attr:"type:text"|attr:"placeholder:Телефон 2"|add_class:"form-control"}}
 
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Description</label>
+                            <label>Описание</label>
                            
-                            {{ form.description|attr:"placeholder:Description..."|add_class:"form-control"|attr:"rows:2"}}
+                            {{ form.description|attr:"placeholder:Описание..."|add_class:"form-control"|attr:"rows:2"}}
                         
                           
                         </div>
                         <div class="form-group col-md-4">
-                            <label>Status</label>
+                            <label>Статус</label>
                             {{ form.status|add_class:"form-control"}}
                         
                         </div>
                     </div>
                     
                  
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">Сохранять</button>
                 </form>
             </div>
         </div>

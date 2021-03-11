@@ -1,0 +1,181 @@
+{% extends 'index.html' %}
+{% load static widget_tweaks poll_extras%}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static '.vendor/select2/css/select2.min.css' %}">
+
+{% endblock extra_css %}
+
+{% block content %}
+<div class="col mt-4">
+    <div class="card">
+        <div class="card-header">
+            <form>
+           
+                <div class="row">
+                    <ul id="navul" style="list-style-type: none;">
+                        <li id="navli">
+                            <label for="">Дата начала</label>
+                            <input value="{{ startdate }}" class="form-control"
+                                   type="date" name="startdate">
+
+                        </li>
+                        <li id="navli">
+                            <label for="">Дата окончания</label>
+
+                            <input value="{{ enddate }}" class="form-control"
+                                   type="date" name="enddate">
+                        </li>
+                        <li id="navli" style="width: 180px;">
+                            <label for="">Контрагент</label>
+
+                            <select  class="maximum-search-length select2" name="counterparty">
+                                <option value="all" {% if selected_counter_pary == 'all' %}selected="selected"{%endif%}>Все</option>
+                                {% for i in counter_parties %}
+                                    <option value="{{ i.id }}" {% if selected_counter_pary|to_int == i.id|to_int %}selected="selected"{% endif %}>{{ i }}</option>
+                                {% endfor %}
+                                </select>
+                        </li>
+                        <li id="navli" style="width: 180px;">
+                            <label for="">Доставка</label>
+
+                            <select  class="maximum-search-length select2" name="delivery">
+                                <option value="all" {% if selected_deliverys == 'all' %}selected="selected"{%endif%}>Все</option>
+                                {% for i in deliverys %}
+                                    <option value="{{ i.id }}" {% if selected_deliverys|to_int == i.id|to_int %}selected="selected"{% endif %}>{{ i }}</option>
+                                {% endfor %}
+                                </select>
+                        </li>
+                        <li id="navli">
+                            <button type="submit" class="btn btn-primary mb-1">Поиск</button>
+                            <a class="btn btn-danger mb-1" href="{% url 'filter-pay' %}">Очиста</a>
+
+
+                        </li>
+                    </ul>
+                    <!-- <div class="col">
+                        <label for="">Start date</label>
+                        <input value="{{ startdate }}" class="form-control"
+                               type="date" name="startdate">
+                    </div> -->
+                    <!-- <div class="col"> -->
+                        <!-- <label for="">End date</label>
+
+                        <input value="{{ enddate }}" class="form-control"
+                               type="date" name="enddate"> -->
+                    <!-- </div> -->
+                    <!-- <div class="col-md-4"> -->
+                        <!-- <select  class="maximum-search-length select2" name="counterparty">
+                            <option value="all">Все</option>
+                            {% for i in counter_parties %}
+                                <option value="{{ i.id }}" {% if selected_counter_pary == i.id %}selected="selected"{% endif %}>{{ i }}</option>
+                            {% endfor %}
+                            </select> -->
+                    <!-- </div> -->
+                    
+                            <!-- <button type="submit" class="btn btn-primary mb-1">Поиск</button> -->
+                           
+                          
+              
+          
+         
+              
+           
+                        </div>
+                  
+                </form>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-responsive-md">
+                    <thead>
+                        <tr>
+                        
+                            <th><strong>#</strong></th>
+                            <th><strong>ПОЛЬЗОВАТЕЛЬ</strong></th>
+                            <th><strong>КОЛИЧЕСТВО</strong></th>
+                            <th><strong>Контрагент</strong></th>
+                            <th><strong>ДОСТАВКА</strong></th>
+                            <th><strong>СПОСОБ ОПЛАТЫ</strong></th>
+                            <th><strong>ТИП</strong></th>
+                            <th><strong>СОЗДАННЫЙ</strong></th>
+                          
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for payment in  filters %}
+                        <tr>
+                            <td><strong>{{ payment.id }}</strong></td>
+                        
+                            <td>{{ payment.user }}</td>
+                            <td>{{ payment.amount }}	</td>
+                            <td>{{ payment.counter_party }}	</td>
+                            <td>{{ payment.delivery }}	</td>
+                            <td>{{ payment.get_payment_type_display }}	</td>
+                            <td>{{ payment.get_pay_type_display }}	</td>
+                            <td>{{ payment.created|date:'Y-m-d' }}	</td>
+
+                        
+                            <td>
+                                <div class="d-flex">
+                                    <!-- <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a> -->
+                                    <!-- <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a> -->
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            {% endfor %}
+                        
+                        
+                           
+                        
+                            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <nav aria-label="Page navigation example">
+            {% if is_paginated %}
+            <ul class="pagination justify-content-center">
+              {% if page_obj.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{page_obj.previous_page_number}}"
+                  >&laquo;</a
+                >
+              </li>
+              {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="#">&laquo;</a>
+              </li>
+              {% endif %} {% for i in paginator.page_range %} {% if page_obj.number == i %}
+              <li class="page-item"><a class="page-link active">{{ i }}</a></li>
+              {% else %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+              </li>
+              {% endif %} {% endfor %} {% if page_obj.has_next %}
+              <li class="page-item">
+                <a href="?page={{page_obj.next_page_number}}" class="page-link">&raquo;</a>
+              </li>
+              {% else %}
+              <li class="page-item disabled">
+                <a class="page-link">&raquo;</a>
+              </li>
+              {% endif %}
+            </ul>
+            {% endif %}
+          </nav>
+    </div>
+    
+</div>
+
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static '.vendor/select2/js/select2.full.min.js' %}"></script>
+    
+    <script>
+        $('.select2').select2()
+    </script>
+{% endblock extra_js %}

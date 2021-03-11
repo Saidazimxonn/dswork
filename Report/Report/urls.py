@@ -23,6 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , include('frontend.urls')),
     path('', include('counter_party.urls')),
-    path('', include('delivery.urls') )
+    path('', include('delivery.urls') ),
+    path('', include('payment.urls')),
+    path('', include('filter.urls')), 
+ 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

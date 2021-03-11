@@ -1,6 +1,7 @@
 from django.db import models
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView
 from .models import Delivery
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class DeliveryView(TemplateView):
     template_name = 'deliver_list.html'
@@ -11,11 +12,23 @@ class DeliveryView(TemplateView):
 class DeliveryListView(ListView):
     template_name = 'deliver_list.html'
     model = Delivery
+    paginate_by = 5
     
     def get_context_data(self, **kwargs):
         context = super(DeliveryListView, self).get_context_data(**kwargs)
-        context['deliverys'] = Delivery.objects.all().order_by('-id')
-        context['salom'] = 'Sasasasasas'
+        deliverys = Delivery.objects.all().order_by('-id')
+        paginator = Paginator(deliverys, self.paginate_by)
+
+        page = self.request.GET.get('page')
+
+        try:
+            file_exams = paginator.page(page)
+        except PageNotAnInteger:
+            file_exams = paginator.page(1)
+        except EmptyPage:
+            file_exams = paginator.page(paginator.num_pages)
+             
+        context['deliverys'] = file_exams
         return context
 
 class DeliverCreateView(CreateView):

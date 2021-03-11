@@ -1,6 +1,5 @@
-from django.contrib import admin
 from django.urls import path
-from .views import DeliveryView, DeliveryListView ,DeliverCreateView, DeliverUpdateView
+from .views import  DeliveryListView ,DeliverCreateView, DeliverUpdateView
 
 urlpatterns = [
     path('delivery/', DeliveryListView.as_view(), name='delivery'),

@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% load static widget_tweaks %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'vendor/select2/css/select2.min.css' %}">
+{% endblock extra_css %}
+{% block content %}
+<div class="card m-3">
+                <div class="card-header">
+                    <h4 class="card-title">Обновить  оплату</h4>
+                </div>
+                <div class="card-body">
+                    <div class="basic-form">
+                        <form method="POST">
+                            {% csrf_token %}
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Цена</label>
+                        {{ form.amount|add_class:"form-control"|attr:"type:number"|attr:"placeholder:Цена"}}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Доставка</label>
+                        {{ form.delivery|add_class:"form-control select2"|attr:"type:text"|attr:"placeholder:Доставка"}}
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Контрагент</label>
+                        {{ form.counter_party|add_class:"form-control"|attr:"type:text"|attr:"placeholder:Контрагент"}}
+
+                        <!-- <input type="text" class="form-control" placeholder="Контрагент"> -->
+                    </div> 
+                    <div class="form-group col-md-6">
+                        <label>Тип оплаты</label>
+                        {{ form.payment_type|add_class:"form-control"|attr:"type:text"|attr:"placeholder:Тип оплаты"}}
+
+                    </div> 
+                    <div class="form-group col-md-6">
+                        <label>Тип</label>
+                        {{ form.pay_type|add_class:"form-control"|attr:"type:text"|attr:"placeholder:Тип"}}
+
+                    </div> 
+                    
+                
+                </div>
+              
+                
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'vendor/select2/js/select2.full.min.js' %}"></script>
+    <script>
+        $('.select2').select2()
+    </script>
+{% endblock extra_js %}
