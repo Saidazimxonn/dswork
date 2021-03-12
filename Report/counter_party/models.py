@@ -6,8 +6,8 @@ class CounterParty(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     full_name = models.CharField(verbose_name='Ф.И.О',
                                  max_length=250)
-    balance_usd = models.FloatField(default=0,
-                                    verbose_name='USD')
+    # balance_usd = models.FloatField(default=0,
+    #                                 verbose_name='USD')
     balance_uzs = models.FloatField(default=0,
                                     verbose_name='UZS')
     description = models.TextField(verbose_name='Описание',

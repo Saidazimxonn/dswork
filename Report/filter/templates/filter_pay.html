@@ -1,7 +1,10 @@
 {% extends 'index.html' %}
 {% load static widget_tweaks poll_extras%}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'vendor/select2/css/select2.min.css' %}">
+
+
+
+    <link rel="stylesheet" href="{% static '.vendor/select2/css/select2.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/datatables/css/jquery.dataTables.min.css' %}">
 {% endblock extra_css %}
 
@@ -9,6 +12,11 @@
 <div class="col mt-4">
     <div class="card">
         <div class="card-header">
+            <h4 class="card-title">Фильтр оплата
+            </h4> 
+        </div>
+        <div class="card-header">
+        
             <form>
            
                 <div class="row">
@@ -28,7 +36,7 @@
                         <li id="navli" style="width: 180px;">
                             <label for="">Контрагент</label>
 
-                            <select  class="maximum-search-length select2" name="counterparty">
+                            <select  class="maximum-search-length select2 form-control" name="counterparty">
                                 <option value="all" {% if selected_counter_pary == 'all' %}selected="selected"{%endif%}>Все</option>
                                 {% for i in counter_parties %}
                                     <option value="{{ i.id }}" {% if selected_counter_pary|to_int == i.id|to_int %}selected="selected"{% endif %}>{{ i }}</option>
@@ -72,7 +80,6 @@
                             <th><strong>КОЛИЧЕСТВО</strong></th>
                             <th><strong>Контрагент</strong></th>
                             <th><strong>ДОСТАВКА</strong></th>
-                            <th><strong>СПОСОБ ОПЛАТЫ</strong></th>
                             <th><strong>ТИП</strong></th>
                             <th><strong>СОЗДАННЫЙ</strong></th>
                           
@@ -89,7 +96,6 @@
                             <td>{{ payment.amount }}	</td>
                             <td>{{ payment.counter_party }}	</td>
                             <td>{{ payment.delivery }}	</td>
-                            <td>{{ payment.get_payment_type_display }}	</td>
                             <td>{{ payment.get_pay_type_display }}	</td>
                             <td>{{ payment.created|date:'Y-m-d' }}	</td>
 
@@ -101,22 +107,7 @@
                         
                             
                     </tbody>
-                    <tfoot>
-                        <tr>
-                        
-                            <th><strong>#</strong></th>
-                            <th><strong>ПОЛЬЗОВАТЕЛЬ</strong></th>
-                            <th><strong>КОЛИЧЕСТВО</strong></th>
-                            <th><strong>Контрагент</strong></th>
-                            <th><strong>ДОСТАВКА</strong></th>
-                            <th><strong>СПОСОБ ОПЛАТЫ</strong></th>
-                            <th><strong>ТИП</strong></th>
-                            <th><strong>СОЗДАННЫЙ</strong></th>
-                          
-
-
-                        </tr>
-                    </tfoot>
+           
                 </table>
             </div>
         </div>

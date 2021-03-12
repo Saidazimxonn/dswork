@@ -12,7 +12,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 class FilterView(TemplateView):
     template_name = 'filter_pay.html'
     paments = Payment.objects.all().order_by('-id')
-    paginate_by = 15
+    
     
     def get_context_data(self, **kwargs):
         counter = []

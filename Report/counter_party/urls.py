@@ -1,6 +1,5 @@
-from django.contrib import admin
 from django.urls import path
-from .views import  CounterPartyListView, CounterPartyCreateView,CounterPartyUpdate
+from .views import  CounterPartyListView, CounterPartyCreateView, CounterPartyUpdate
 
 
 urlpatterns = [
@@ -9,4 +8,4 @@ urlpatterns = [
     path('con-party-update/update/<int:pk>/', CounterPartyUpdate.as_view(), name='con_party_update'),
    
 ]
-    # path('outlay/update/<int:pk>', OutlayUpdateView.as_view(), name='outlay-payment-update'),
+    

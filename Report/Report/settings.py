@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'counter_party',
-    'counter_party_character',
     'delivery',
     'payment',
     'frontend',

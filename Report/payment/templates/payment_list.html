@@ -21,7 +21,6 @@
                             <th><strong>КОЛИЧЕСТВО</strong></th>
                             <th><strong>ДОСТАВКА</strong></th>
                             <th><strong>Контрагент</strong></th>
-                            <th><strong>Тип оплаты</strong></th>
                             <th><strong>Тип</strong></th>
                             <th><strong>Созданный</strong></th>
                             
@@ -38,9 +37,8 @@
                             <td>{{ payment.amount }}	</td>
                             <td>{{ payment.delivery }}	</td>
                             <td>{{ payment.counter_party }}	</td>
-                           <td>{{ payment.get_payment_type_display }}	</td>
-                           <td>{{ payment.get_type_display }}	</td>
-                           <td>{{ payment.created|date:'Y-m-d' }}	</td>
+                            <td>{{ payment.get_pay_type_display }}	</td>
+                            <td>{{ payment.created|date:'Y-m-d' }}	</td>
 
                         
                             <td>

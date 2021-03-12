@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from .choices import PAYMENT_TYPE, TYPE
+from .choices import  TYPE
 
 # Create your models here.
 class Payment(models.Model):
@@ -13,9 +13,6 @@ class Payment(models.Model):
     counter_party = models.ForeignKey('counter_party.CounterParty',
                                         on_delete=models.CASCADE,
                                         verbose_name='Контрагент')
-    payment_type = models.CharField(verbose_name='Тип оплаты',
-                                    choices=PAYMENT_TYPE,
-                                    max_length=250)
     pay_type = models.CharField(verbose_name='Тип журнала платежей',
                                         choices=TYPE,
                                         max_length=250)

@@ -12,7 +12,7 @@ class DeliveryView(TemplateView):
 class DeliveryListView(ListView):
     template_name = 'deliver_list.html'
     model = Delivery
-    paginate_by = 5
+    paginate_by = 20
     
     def get_context_data(self, **kwargs):
         context = super(DeliveryListView, self).get_context_data(**kwargs)

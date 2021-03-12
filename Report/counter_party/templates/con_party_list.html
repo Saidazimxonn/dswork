@@ -18,8 +18,8 @@
                         
                             <th><strong>#</strong></th>
                             <th><strong>Ф.И.О</strong></th>
-                            <th><strong>БАЛАНС UZS</strong></th>
-                            <th><strong>БАЛАНС USD</strong></th>
+                            <th><strong>БАЛАНС</strong></th>
+                        
                             <th><strong>Статус</strong></th>
                             <th><strong>ОРГАНИЗАЦИЯ</strong></th>
                             <th><strong>ТЕЛЕФОН</strong></th>
@@ -35,7 +35,7 @@
                         
                             <td>{{ conparty.full_name }}</td>
                             <td>{{ conparty.balance_uzs }}	</td>
-                            <td>{{ conparty.balance_usd }}	</td>
+                       
                             <!-- <td>{{ i.created|date:' H:i Y-m-d' }}	</td>    -->
                             {% if conparty.status == 'active' %}
                             <td><div class="d-flex align-items-center"><i class="fa fa-circle text-success mr-1"></i> Активен</div></td>
