@@ -1,5 +1,3 @@
-from django.core import paginator
-from django.db import models
 from django.views.generic import CreateView, ListView, UpdateView
 from .models import CounterParty
 from django.core.paginator import Paginator

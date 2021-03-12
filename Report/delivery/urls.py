@@ -8,4 +8,4 @@ urlpatterns = [
   
    
 ]
-    # path('outlay/update/<int:pk>', OutlayUpdateView.as_view(), name='outlay-payment-update'),
+   

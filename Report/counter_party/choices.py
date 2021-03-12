@@ -1,5 +1,5 @@
 COUNTER_PARTY_STATUS = {
-    ('active','активен'),
+    ('active', 'активен') ,
     ('not active', 'не активен')
     
 }

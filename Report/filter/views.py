@@ -1,12 +1,9 @@
-from django.core import paginator
-from django.db import models
-from django.db.models import fields
 from django.views.generic import  CreateView ,ListView
 from django.views.generic.base import TemplateView
 from payment.models import Payment
 from counter_party.models import CounterParty
 from delivery.models import Delivery
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 # Create your views here.
 
 class FilterView(TemplateView):
