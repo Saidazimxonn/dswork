@@ -8,7 +8,7 @@ from django.db import models
 # Create your models here.
 from multiselectfield import MultiSelectField
 # from outlay.choices import PAYMENT_TYPE_CHOICES
-from user.choices import USER_TYPE_CHOICES
+from `user.choices` import USER_TYPE_CHOICES
 from django.utils.translation import ugettext_lazy as _
 
 

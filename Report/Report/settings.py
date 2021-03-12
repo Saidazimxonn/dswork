@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'filter',
     'active_link',
-    'frontend.templatetags'
+    'frontend.templatetags',
+ 
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'frontend.middleware.RequireLoginMiddleware',
 ]
 
 ROOT_URLCONF = 'Report.urls'
@@ -63,7 +65,7 @@ ROOT_URLCONF = 'Report.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,4 +131,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+)
+LOGIN_REDIRECT_URL = '/'
+LOGIN_REQUIRED_URLS = (
+    r'(.*)',
+)
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_REQUIRED_URLS_EXCEPTIONS = (
+    r'/admin(.*)$',
+    r'/api/v1/(.*)$',
+    '/accounts/login/',
+    '/registration/',
 )
